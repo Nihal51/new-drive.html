@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DriveBuddy — Premium Driver Services | Chhattisgarh</title>
+<meta name="description" content="Certified, background-verified drivers in Raipur, Bhilai, Durg & Bilaspur. 30-min response. Book now: 9111473929">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & BASE ─── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+:root{
+  --bg:#0c0c0b;
+  --bg2:#141412;
+  --bg3:#1c1c1a;
+  --amber:#e8922a;
+  --amber-light:#f5b563;
+  --amber-dim:rgba(232,146,42,0.12);
+  --cream:#f5efe4;
+  --cream-dim:rgba(245,239,228,0.55);
+  --muted:rgba(245,239,228,0.35);
+  --border:rgba(245,239,228,0.08);
+  --border-amber:rgba(232,146,42,0.3);
+  --serif:'Cormorant Garamond',serif;
+  --sans:'DM Sans',sans-serif;
+  --mono:'DM Mono',monospace;
+  --rad:16px;
+  --transition:0.4s cubic-bezier(0.22,1,0.36,1);
+}
+body{background:var(--bg);color:var(--cream);font-family:var(--sans);overflow-x:hidden;line-height:1.65}
+
+/* ─── GRAIN OVERLAY ─── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:0.4;mix-blend-mode:overlay;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--amber);border-radius:2px}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 5%;
+  background:rgba(12,12,11,0.88);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  transition:var(--transition);
+}
+nav.scrolled{padding:1rem 5%;background:rgba(12,12,11,0.97)}
+.nav-logo{
+  font-family:var(--serif);font-size:1.7rem;font-weight:700;
+  color:var(--cream);letter-spacing:-0.02em;text-decoration:none;
+  display:flex;align-items:center;gap:0.5rem;
+}
+.nav-logo span{color:var(--amber)}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+.nav-links a{
+  color:var(--cream-dim);text-decoration:none;font-size:0.875rem;
+  font-weight:500;letter-spacing:0.04em;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--cream)}
+.nav-cta{
+  background:var(--amber);color:var(--bg);
+  padding:0.65rem 1.5rem;border-radius:50px;
+  font-size:0.8rem;font-weight:600;text-decoration:none;
+  letter-spacing:0.05em;transition:var(--transition);white-space:nowrap;
+}
+.nav-cta:hover{background:var(--amber-light);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--cream);transition:var(--transition)}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
+  padding:10rem 5% 6rem;
+  max-width:1400px;margin:0 auto;
+  position:relative;
+}
+.hero::before{
+  content:'';position:absolute;
+  top:20%;right:0;width:55%;height:70%;
+  background:radial-gradient(ellipse at 70% 40%, rgba(232,146,42,0.08) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  background:var(--amber-dim);border:1px solid var(--border-amber);
+  border-radius:50px;padding:0.4rem 1rem;
+  font-family:var(--mono);font-size:0.72rem;color:var(--amber);
+  letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2rem;
+}
+.hero-eyebrow::before{content:'';width:6px;height:6px;background:var(--amber);border-radius:50%;animation:blink 1.8s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero-title{
+  font-family:var(--serif);
+  font-size:clamp(3rem,5.5vw,5.5rem);
+  font-weight:600;line-height:1.08;
+  letter-spacing:-0.02em;color:var(--cream);
+  margin-bottom:1.8rem;
+}
+.hero-title em{font-style:italic;color:var(--amber)}
+.hero-sub{
+  color:var(--cream-dim);font-size:1.05rem;
+  line-height:1.7;max-width:420px;margin-bottom:3rem;
+  font-weight:300;
+}
+.hero-badges{display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:3rem}
+.badge{
+  display:flex;align-items:center;gap:0.4rem;
+  border:1px solid var(--border);border-radius:8px;
+  padding:0.4rem 0.8rem;font-size:0.78rem;color:var(--cream-dim);
+  font-family:var(--mono);
+}
+.badge::before{content:'✓';color:var(--amber);font-weight:700}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  background:var(--amber);color:var(--bg);
+  padding:1rem 2.2rem;border-radius:50px;
+  font-weight:600;font-size:0.9rem;text-decoration:none;
+  letter-spacing:0.04em;transition:var(--transition);
+  display:inline-flex;align-items:center;gap:0.5rem;
+  border:none;cursor:pointer;
+}
+.btn-primary:hover{background:var(--amber-light);transform:translateY(-2px);box-shadow:0 12px 30px rgba(232,146,42,0.35)}
+.btn-ghost{
+  background:transparent;color:var(--cream);
+  padding:1rem 2.2rem;border-radius:50px;
+  font-weight:500;font-size:0.9rem;text-decoration:none;
+  border:1px solid var(--border);transition:var(--transition);
+  display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;
+}
+.btn-ghost:hover{border-color:rgba(245,239,228,0.3);background:rgba(245,239,228,0.04)}
+
+/* ─── BOOKING CARD ─── */
+.booking-card{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:28px;padding:2.8rem 2.4rem;
+  position:relative;overflow:hidden;
+}
+.booking-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--amber),transparent);
+}
+.booking-card::after{
+  content:'';position:absolute;bottom:-80px;right:-80px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(232,146,42,0.06) 0%,transparent 70%);
+}
+.card-label{
+  font-family:var(--mono);font-size:0.7rem;color:var(--amber);
+  letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.8rem;
+  display:flex;align-items:center;gap:0.5rem;
+}
+.card-label::before{content:'';flex:1;height:1px;background:var(--border)}
+.card-title{
+  font-family:var(--serif);font-size:1.9rem;font-weight:600;
+  color:var(--cream);margin-bottom:2rem;line-height:1.2;
+}
+.field{position:relative;margin-bottom:1rem}
+.field-label{
+  display:block;font-size:0.72rem;font-weight:500;
+  color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;
+  margin-bottom:0.45rem;
+}
+.field-wrap{position:relative}
+.field-icon{
+  position:absolute;left:1rem;top:50%;transform:translateY(-50%);
+  color:var(--amber);font-size:0.85rem;z-index:1;
+}
+input.finput, select.finput{
+  width:100%;background:var(--bg3);
+  border:1px solid var(--border);border-radius:12px;
+  color:var(--cream);font-family:var(--sans);font-size:0.9rem;
+  padding:0.9rem 1rem 0.9rem 2.7rem;
+  transition:var(--transition);outline:none;appearance:none;
+  -webkit-appearance:none;
+}
+input.finput::placeholder{color:var(--muted)}
+input.finput:focus, select.finput:focus{
+  border-color:var(--border-amber);
+  background:rgba(28,28,26,0.95);
+  box-shadow:0 0 0 3px rgba(232,146,42,0.08);
+}
+select.finput option{background:#1c1c1a;color:#f5efe4}
+.fields-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.submit-btn{
+  width:100%;margin-top:1.5rem;background:var(--amber);color:var(--bg);
+  border:none;border-radius:12px;padding:1.1rem;
+  font-family:var(--sans);font-size:0.95rem;font-weight:700;
+  cursor:pointer;transition:var(--transition);letter-spacing:0.03em;
+  display:flex;align-items:center;justify-content:center;gap:0.6rem;
+}
+.submit-btn:hover{background:var(--amber-light);transform:translateY(-2px);box-shadow:0 12px 28px rgba(232,146,42,0.3)}
+.form-note{
+  text-align:center;font-size:0.75rem;color:var(--muted);
+  margin-top:1rem;display:flex;align-items:center;justify-content:center;gap:0.4rem;
+}
+
+/* ─── ROAD DIVIDER ─── */
+.road-divider{
+  height:80px;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;margin:0 5%;
+}
+.road-line{
+  flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);
+}
+.road-dot{
+  width:6px;height:6px;background:var(--amber);border-radius:50%;
+  margin:0 1.5rem;flex-shrink:0;
+}
+
+/* ─── SECTION BASE ─── */
+section{padding:7rem 5%}
+.section-tag{
+  font-family:var(--mono);font-size:0.7rem;color:var(--amber);
+  letter-spacing:0.12em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:0.5rem;margin-bottom:1rem;
+}
+.section-tag::after{content:'';width:32px;height:1px;background:var(--amber);opacity:0.5}
+.section-title{
+  font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.8rem);
+  font-weight:600;letter-spacing:-0.02em;color:var(--cream);
+  margin-bottom:1rem;line-height:1.1;
+}
+.section-title em{font-style:italic;color:var(--amber)}
+.section-sub{color:var(--cream-dim);font-size:1rem;font-weight:300;max-width:520px;line-height:1.7}
+
+/* ─── TRUST SECTION ─── */
+.trust-section{background:var(--bg);max-width:1400px;margin:0 auto}
+.trust-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;margin-bottom:4rem}
+.trust-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
+}
+.trust-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:20px;padding:2.2rem 1.8rem;
+  transition:var(--transition);position:relative;overflow:hidden;
+}
+.trust-card::before{
+  content:'';position:absolute;inset:0;border-radius:20px;
+  background:linear-gradient(135deg,rgba(232,146,42,0.04) 0%,transparent 60%);
+  opacity:0;transition:var(--transition);
+}
+.trust-card:hover{transform:translateY(-6px);border-color:var(--border-amber)}
+.trust-card:hover::before{opacity:1}
+.trust-num{
+  font-family:var(--serif);font-size:3.5rem;font-weight:300;
+  color:rgba(232,146,42,0.15);line-height:1;margin-bottom:1.2rem;
+}
+.trust-icon-wrap{
+  width:48px;height:48px;background:var(--amber-dim);
+  border:1px solid var(--border-amber);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;margin-bottom:1.4rem;color:var(--amber);
+}
+.trust-card h3{font-size:1.05rem;font-weight:600;color:var(--cream);margin-bottom:0.6rem}
+.trust-card p{font-size:0.85rem;color:var(--cream-dim);line-height:1.6;font-weight:300}
+
+/* ─── SERVICES ─── */
+.services-section{
+  background:var(--bg2);position:relative;overflow:hidden;
+}
+.services-section::before{
+  content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(232,146,42,0.04) 0%,transparent 65%);
+  pointer-events:none;
+}
+.services-inner{max-width:1400px;margin:0 auto}
+.services-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:4rem;
+}
+.service-card{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:20px;padding:2.4rem 2.2rem;
+  display:flex;gap:1.8rem;align-items:flex-start;
+  transition:var(--transition);cursor:default;
+}
+.service-card:hover{border-color:var(--border-amber);background:rgba(20,20,18,0.95);transform:translateX(4px)}
+.service-icon-box{
+  width:52px;height:52px;border-radius:14px;flex-shrink:0;
+  background:var(--amber-dim);border:1px solid var(--border-amber);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;color:var(--amber);transition:var(--transition);
+}
+.service-card:hover .service-icon-box{background:var(--amber);color:var(--bg);border-color:var(--amber)}
+.service-info h3{font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:0.5rem}
+.service-info p{font-size:0.875rem;color:var(--cream-dim);line-height:1.65;font-weight:300}
+.service-tag{
+  display:inline-block;margin-top:0.8rem;font-family:var(--mono);
+  font-size:0.68rem;color:var(--amber);letter-spacing:0.06em;
+  background:var(--amber-dim);border-radius:4px;padding:0.2rem 0.5rem;
+}
+
+/* ─── STATS STRIP ─── */
+.stats-strip{
+  background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:4rem 5%;
+}
+.stats-inner{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  divide-color:var(--border);
+}
+.stat-item{
+  text-align:center;padding:0 2rem;
+  border-right:1px solid var(--border);
+}
+.stat-item:last-child{border-right:none}
+.stat-num{
+  font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);
+  font-weight:600;color:var(--amber);line-height:1;margin-bottom:0.5rem;
+  letter-spacing:-0.02em;
+}
+.stat-label{font-size:0.8rem;color:var(--muted);font-weight:400;letter-spacing:0.05em;text-transform:uppercase}
+
+/* ─── REVIEWS ─── */
+.reviews-section{background:var(--bg);max-width:1400px;margin:0 auto}
+.reviews-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;margin-top:4rem;
+}
+.review-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:20px;padding:2.2rem;position:relative;
+  transition:var(--transition);overflow:hidden;
+}
+.review-card::before{
+  content:'❝';position:absolute;top:1.4rem;right:1.8rem;
+  font-family:var(--serif);font-size:4rem;color:rgba(232,146,42,0.08);
+  line-height:1;
+}
+.review-card:hover{border-color:var(--border-amber);transform:translateY(-4px)}
+.stars{color:var(--amber);font-size:0.85rem;letter-spacing:0.05em;margin-bottom:1.2rem}
+.review-text{
+  font-size:0.9rem;color:var(--cream-dim);line-height:1.75;
+  font-style:italic;font-weight:300;margin-bottom:1.8rem;
+}
+.reviewer-info{display:flex;align-items:center;gap:1rem}
+.reviewer-av{
+  width:38px;height:38px;border-radius:50%;
+  background:linear-gradient(135deg,var(--amber),#c1771a);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:1rem;color:var(--bg);font-weight:700;
+}
+.reviewer-name{font-size:0.85rem;font-weight:600;color:var(--cream)}
+.reviewer-loc{font-size:0.75rem;color:var(--muted);margin-top:0.1rem}
+
+/* ─── COVERAGE ─── */
+.coverage-section{background:var(--bg2)}
+.coverage-inner{max-width:1400px;margin:0 auto}
+.cities-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:4rem;
+}
+.city-card{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:20px;padding:2rem 1.6rem;
+  text-align:center;transition:var(--transition);
+  position:relative;overflow:hidden;cursor:default;
+}
+.city-card:hover{border-color:var(--border-amber);transform:translateY(-6px)}
+.city-flag{font-size:2.5rem;margin-bottom:1rem;display:block}
+.city-name{
+  font-family:var(--serif);font-size:1.5rem;font-weight:600;
+  color:var(--cream);margin-bottom:0.6rem;
+}
+.city-desc{font-size:0.8rem;color:var(--muted);line-height:1.6}
+.city-badge{
+  display:inline-block;margin-top:1rem;
+  font-family:var(--mono);font-size:0.66rem;color:var(--amber);
+  background:var(--amber-dim);border-radius:4px;padding:0.2rem 0.6rem;
+  letter-spacing:0.06em;
+}
+
+/* ─── CTA SECTION ─── */
+.cta-section{
+  background:var(--bg);text-align:center;
+  padding:8rem 5%;position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:800px;height:400px;
+  background:radial-gradient(ellipse,rgba(232,146,42,0.07) 0%,transparent 65%);
+}
+.cta-inner{max-width:640px;margin:0 auto;position:relative}
+.cta-title{
+  font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.5rem);
+  font-weight:600;color:var(--cream);letter-spacing:-0.02em;
+  margin-bottom:1.5rem;line-height:1.1;
+}
+.cta-title em{font-style:italic;color:var(--amber)}
+.cta-sub{color:var(--cream-dim);font-size:1rem;font-weight:300;margin-bottom:3rem;line-height:1.7}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-wa{
+  background:#25d366;color:#fff;
+  padding:1rem 2rem;border-radius:50px;
+  font-weight:600;font-size:0.9rem;text-decoration:none;
+  display:inline-flex;align-items:center;gap:0.5rem;
+  transition:var(--transition);
+}
+.btn-wa:hover{background:#1ebe5c;transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,211,102,0.3)}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--bg2);border-top:1px solid var(--border);
+  padding:4rem 5% 2rem;
+}
+.footer-inner{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;
+  padding-bottom:3rem;border-bottom:1px solid var(--border);
+  margin-bottom:2rem;
+}
+.footer-brand .logo-text{
+  font-family:var(--serif);font-size:1.6rem;font-weight:700;
+  color:var(--cream);display:flex;align-items:center;gap:0.4rem;
+  margin-bottom:1rem;
+}
+.footer-brand .logo-text span{color:var(--amber)}
+.footer-brand p{font-size:0.85rem;color:var(--muted);line-height:1.75;font-weight:300;max-width:280px}
+.footer-contact{margin-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem}
+.footer-contact a{
+  font-size:0.85rem;color:var(--cream-dim);text-decoration:none;
+  transition:color 0.2s;display:flex;align-items:center;gap:0.4rem;
+}
+.footer-contact a:hover{color:var(--amber)}
+.footer-col h4{
+  font-size:0.75rem;font-weight:600;color:var(--muted);
+  text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.2rem;
+}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:0.6rem}
+.footer-col ul li a{font-size:0.85rem;color:var(--cream-dim);text-decoration:none;transition:color 0.2s}
+.footer-col ul li a:hover{color:var(--cream)}
+.footer-bottom{
+  max-width:1400px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-bottom p{font-size:0.78rem;color:var(--muted)}
+
+/* ─── ANIMATIONS ─── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s var(--transition),transform 0.7s var(--transition)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+
+/* ─── MOBILE NAV MENU ─── */
+.mobile-menu{
+  display:none;position:fixed;inset:0;z-index:99;
+  background:rgba(12,12,11,0.98);backdrop-filter:blur(24px);
+  flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  font-family:var(--serif);font-size:2.2rem;font-weight:600;
+  color:var(--cream);text-decoration:none;transition:color 0.2s;
+}
+.mobile-menu a:hover{color:var(--amber)}
+.menu-close{
+  position:absolute;top:1.5rem;right:5%;
+  background:none;border:none;color:var(--cream);font-size:1.5rem;cursor:pointer;
+}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .cities-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:3rem;padding:8rem 5% 5rem;text-align:center}
+  .hero-badges{justify-content:center}
+  .hero-actions{justify-content:center}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .services-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .stat-item{border-right:none;border-bottom:1px solid var(--border);padding:2rem}
+  .stat-item:nth-child(even){border-left:1px solid var(--border)}
+  .stat-item:last-child,.stat-item:nth-last-child(2):nth-child(odd){border-bottom:none}
+  .reviews-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .trust-grid{grid-template-columns:1fr}
+  section{padding:5rem 5%}
+}
+@media(max-width:540px){
+  .hero{padding:7rem 5% 4rem}
+  .cities-grid{grid-template-columns:1fr 1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .fields-row{grid-template-columns:1fr}
+  .trust-header{flex-direction:column;gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Drive<span>Buddy</span></a>
+  <ul class="nav-links">
+    <li><a href="#trust">Why Us</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#coverage">Cities</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+  </ul>
+  <a href="tel:919111473929" class="nav-cta">📞 9111473929</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="menu-close" onclick="toggleMenu()">✕</button>
+  <a href="#trust" onclick="toggleMenu()">Why Us</a>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#coverage" onclick="toggleMenu()">Cities</a>
+  <a href="#reviews" onclick="toggleMenu()">Reviews</a>
+  <a href="tel:919111473929" style="color:var(--amber)">📞 9111473929</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content reveal">
+    <div class="hero-eyebrow">Available 24 × 7 · 30-min Response</div>
+    <h1 class="hero-title">Your car.<br><em>Our driver.</em><br>Your peace.</h1>
+    <p class="hero-sub">You own the car — we send the driver. Background-verified, sober, experienced professionals across Chhattisgarh's key cities.</p>
+    <div class="hero-badges">
+      <div class="badge">Police Verified</div>
+      <div class="badge">Zero Alcohol Policy</div>
+      <div class="badge">5+ Yrs Experience</div>
+    </div>
+    <div class="hero-actions">
+      <a href="tel:919111473929" class="btn-primary">📞 Call to Book</a>
+      <a href="https://wa.me/919111473929" class="btn-ghost">WhatsApp →</a>
+    </div>
+  </div>
+
+  <!-- BOOKING FORM -->
+  <div class="booking-card reveal reveal-delay-2">
+    <div class="card-label">Quick Booking</div>
+    <div class="card-title">Reserve a Driver</div>
+    <form id="bookingForm">
+      <div class="fields-row">
+        <div class="field">
+          <label class="field-label">Pickup</label>
+          <div class="field-wrap">
+            <span class="field-icon">📍</span>
+            <input type="text" class="finput" id="pickup" placeholder="Your location" required>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Destination</label>
+          <div class="field-wrap">
+            <span class="field-icon">🎯</span>
+            <input type="text" class="finput" id="dropoff" placeholder="Where to?">
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Package</label>
+        <div class="field-wrap">
+          <span class="field-icon">⏱</span>
+          <select class="finput" id="duration" required>
+            <option value="">Choose a package</option>
+            <option value="1 Hour — ₹300">1 Hour — ₹300</option>
+            <option value="3 Hours — ₹700 (Most Popular)">3 Hours — ₹700 · Most Popular</option>
+            <option value="Full Day — ₹1100">Full Day — ₹1100</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Your Phone</label>
+        <div class="field-wrap">
+          <span class="field-icon">📱</span>
+          <input type="tel" class="finput" id="phone" placeholder="10-digit number" maxlength="10" required>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn" id="submitBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.455 23l.582-3.436A10.892 10.892 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a10.892 10.892 0 01-6.545-2.145L1 23l4.455-.001z"/></svg>
+        Book via WhatsApp
+      </button>
+    </form>
+    <p class="form-note">🔒 Your details shared only with your assigned driver</p>
+  </div>
+</section>
+
+<!-- ROAD DIVIDER -->
+<div class="road-divider">
+  <div class="road-line"></div>
+  <div class="road-dot"></div>
+  <div class="road-dot" style="opacity:0.4"></div>
+  <div class="road-dot" style="opacity:0.2"></div>
+  <div class="road-line"></div>
+</div>
+
+<!-- TRUST -->
+<section id="trust" class="trust-section">
+  <div class="trust-header">
+    <div>
+      <div class="section-tag">Our Promise</div>
+      <h2 class="section-title reveal">Why families<br><em>trust us</em></h2>
+    </div>
+    <p class="section-sub reveal">Every driver passes a rigorous 4-stage verification before they touch your steering wheel.</p>
+  </div>
+  <div class="trust-grid">
+    <div class="trust-card reveal">
+      <div class="trust-num">01</div>
+      <div class="trust-icon-wrap">🛡️</div>
+      <h3>Police Verified</h3>
+      <p>Full criminal background check. Government-issued ID verified. Zero exceptions.</p>
+    </div>
+    <div class="trust-card reveal reveal-delay-1">
+      <div class="trust-num">02</div>
+      <div class="trust-icon-wrap">🚫</div>
+      <h3>Zero Alcohol Policy</h3>
+      <p>Strict breathalyzer tests before every shift. Lifetime ban for any violation.</p>
+    </div>
+    <div class="trust-card reveal reveal-delay-2">
+      <div class="trust-num">03</div>
+      <div class="trust-icon-wrap">🎓</div>
+      <h3>Professionally Trained</h3>
+      <p>Defensive driving, first aid, and customer care certification mandatory.</p>
+    </div>
+    <div class="trust-card reveal reveal-delay-3">
+      <div class="trust-num">04</div>
+      <div class="trust-icon-wrap">⭐</div>
+      <h3>5+ Years Experience</h3>
+      <p>Minimum five years of professional driving. Your route, mastered.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="500">0</div>
+      <div class="stat-label">Happy Families</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Always Available</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-num" data-target="30">0</div>
+      <div class="stat-label">Min Response</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-num">4.9★</div>
+      <div class="stat-label">Average Rating</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services-section">
+  <div class="services-inner">
+    <div class="section-tag">What We Offer</div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem">
+      <h2 class="section-title reveal">Every journey,<br><em>covered</em></h2>
+      <p class="section-sub reveal">From school runs to late-night office returns — we have a driver ready for every need.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon-box">🚗</div>
+        <div class="service-info">
+          <h3>Personal Driver</h3>
+          <p>Drive your own car for errands, shopping, kids' school runs or any daily need. Your car stays with you.</p>
+          <span class="service-tag">MOST BOOKED</span>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon-box">🏥</div>
+        <div class="service-info">
+          <h3>Medical Transport</h3>
+          <p>Hospital visits, clinic appointments and emergency transfers with a calm, patient driver.</p>
+          <span class="service-tag">24/7 AVAILABLE</span>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon-box">🌙</div>
+        <div class="service-info">
+          <h3>Night Safety Driver</h3>
+          <p>Safe late-night travel for women, families and office returnees. Verified, trusted, punctual.</p>
+          <span class="service-tag">POPULAR</span>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon-box">✈️</div>
+        <div class="service-info">
+          <h3>Airport Service</h3>
+          <p>Pickup, drop and meet-greet with real-time flight tracking. Never miss a flight again.</p>
+          <span class="service-tag">FLIGHT TRACKED</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews-section">
+  <div class="section-tag">Happy Clients</div>
+  <h2 class="section-title reveal">What families<br><em>say about us</em></h2>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Driver arrived in under 25 minutes. Polite, sober, and drove perfectly. My elderly mother felt completely safe. Will book again!"</p>
+      <div class="reviewer-info">
+        <div class="reviewer-av">R</div>
+        <div>
+          <div class="reviewer-name">Ramesh Sahu</div>
+          <div class="reviewer-loc">📍 Raipur</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-1">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Perfect for hospital visits with elderly parents. The driver waited patiently for 3 hours without complaint. Truly professional service."</p>
+      <div class="reviewer-info">
+        <div class="reviewer-av">A</div>
+        <div>
+          <div class="reviewer-name">Anjali Mishra</div>
+          <div class="reviewer-loc">📍 Bhilai</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-2">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Airport pickup was seamless — driver tracked my flight and was waiting before I even exited arrivals. Family travel made easy!"</p>
+      <div class="reviewer-info">
+        <div class="reviewer-av">P</div>
+        <div>
+          <div class="reviewer-name">Priya Khanna</div>
+          <div class="reviewer-loc">📍 Durg</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROAD DIVIDER -->
+<div class="road-divider">
+  <div class="road-line"></div>
+  <div class="road-dot" style="opacity:0.2"></div>
+  <div class="road-dot" style="opacity:0.4"></div>
+  <div class="road-dot"></div>
+  <div class="road-line"></div>
+</div>
+
+<!-- COVERAGE -->
+<section id="coverage" class="coverage-section">
+  <div class="coverage-inner">
+    <div class="section-tag">Serving Cities</div>
+    <h2 class="section-title reveal">We come to <em>you</em></h2>
+    <div class="cities-grid">
+      <div class="city-card reveal">
+        <span class="city-flag">🏢</span>
+        <div class="city-name">Raipur</div>
+        <p class="city-desc">Capital city HQ — Airport, Railway Station, all major hospitals and neighbourhoods.</p>
+        <span class="city-badge">HEADQUARTERS</span>
+      </div>
+      <div class="city-card reveal reveal-delay-1">
+        <span class="city-flag">🏭</span>
+        <div class="city-name">Bhilai</div>
+        <p class="city-desc">Full industrial and residential coverage across the Steel City, round the clock.</p>
+        <span class="city-badge">FULL COVERAGE</span>
+      </div>
+      <div class="city-card reveal reveal-delay-2">
+        <span class="city-flag">🏙️</span>
+        <div class="city-name">Durg</div>
+        <p class="city-desc">Complete coverage of all wards, markets and institutions in Durg city.</p>
+        <span class="city-badge">FULL COVERAGE</span>
+      </div>
+      <div class="city-card reveal reveal-delay-3">
+        <span class="city-flag">🏛️</span>
+        <div class="city-name">Bilaspur</div>
+        <p class="city-desc">University campuses, medical hubs and all residential colonies covered.</p>
+        <span class="city-badge">FULL COVERAGE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-tag" style="justify-content:center">Book a Driver</div>
+    <h2 class="cta-title reveal">Ready for a <em>safe ride?</em></h2>
+    <p class="cta-sub reveal">Call or WhatsApp us — a verified driver reaches you in 30 minutes or less, anywhere in these cities.</p>
+    <div class="cta-btns reveal">
+      <a href="tel:919111473929" class="btn-primary" style="font-size:1rem;padding:1.1rem 2.5rem">📞 9111473929</a>
+      <a href="https://wa.me/919111473929" class="btn-wa" style="font-size:1rem;padding:1.1rem 2.5rem">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.455 23l.582-3.436A10.892 10.892 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a10.892 10.892 0 01-6.545-2.145L1 23l4.455-.001z"/></svg>
+        WhatsApp Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-text">Drive<span>Buddy</span></div>
+      <p>Certified driver services across Chhattisgarh. We solve the problem of having a car but no trusted driver — every single day.</p>
+      <div class="footer-contact">
+        <a href="tel:919111473929">📞 9111473929</a>
+        <a href="tel:919893302783">📞 9893302783</a>
+        <a href="tel:919109923756">📞 9109923756</a>
+        <a href="mailto:nihalchandrakar70@gmail.com">✉️ nihalchandrakar70@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Personal Driver</a></li>
+        <li><a href="#">Medical Transport</a></li>
+        <li><a href="#">Night Safety</a></li>
+        <li><a href="#">Airport Service</a></li>
+        <li><a href="#">Outstation Driver</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Cities</h4>
+      <ul>
+        <li><a href="#">Raipur</a></li>
+        <li><a href="#">Bhilai</a></li>
+        <li><a href="#">Durg</a></li>
+        <li><a href="#">Bilaspur</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#trust">Why Us</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 DriveBuddy. All rights reserved.</p>
+    <p style="color:var(--amber);font-family:var(--mono);font-size:0.72rem">RAIPUR · BHILAI · DURG · BILASPUR</p>
+  </div>
+</footer>
+
+<script>
+// NAV SCROLL
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{
+  navbar.classList.toggle('scrolled',window.scrollY>60);
+});
+
+// MOBILE MENU
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// REVEAL ON SCROLL
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(el=>observer.observe(el));
+
+// COUNTER ANIMATION
+function animateCount(el,target,suffix=''){
+  let current=0;const duration=1800;const step=target/duration*16;
+  const timer=setInterval(()=>{
+    current=Math.min(current+step,target);
+    el.textContent=Math.floor(current)+(suffix||'');
+    if(current>=target)clearInterval(timer);
+  },16);
+}
+const statObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target;const target=el.dataset.target;
+      if(target){
+        const suffix=el.closest('.stat-item').querySelector('.stat-label').textContent.includes('Min')?'min':'+';
+        animateCount(el,parseInt(target),suffix);
+      }
+      statObserver.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('[data-target]').forEach(el=>statObserver.observe(el));
+
+// BOOKING FORM
+document.getElementById('bookingForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const pickup=document.getElementById('pickup').value;
+  const dropoff=document.getElementById('dropoff').value;
+  const duration=document.getElementById('duration').value;
+  const phone=document.getElementById('phone').value;
+  const msg=`🚗 *DriveBuddy Booking*\n\n📍 Pickup: ${pickup}\n🎯 Drop: ${dropoff||'Not specified'}\n⏱ Package: ${duration}\n📱 Contact: ${phone}\n\n_Sent from DriveBuddy website_`;
+  window.open(`https://wa.me/919111473929?text=${encodeURIComponent(msg)}`,'_blank');
+  const btn=document.getElementById('submitBtn');
+  btn.textContent='✅ Sent! We\'ll call you shortly.';
+  btn.style.background='#25d366';
+  setTimeout(()=>{btn.innerHTML=`<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.455 23l.582-3.436A10.892 10.892 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a10.892 10.892 0 01-6.545-2.145L1 23l4.455-.001z"/></svg> Book via WhatsApp`;btn.style.background='';e.target.reset();},3000);
+});
+
+// PHONE INPUT
+document.getElementById('phone').addEventListener('input',e=>{
+  e.target.value=e.target.value.replace(/\D/g,'').slice(0,10);
+});
+</script>
+</body>
+</html>

@@ -83,55 +83,83 @@ nav.scrolled{padding:0.75rem 5%;background:rgba(8,8,7,0.98)}
 .hamburger.active span:nth-child(2){opacity:0;transform:scaleX(0)}
 .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
 
-/* ━━ MOBILE DRAWER ━━ */
+/* ━━ UBER-STYLE FULL SCREEN MOBILE MENU (PHONE ONLY) ━━ */
+@media(max-width:768px){
 .mob-drawer{
-  position:fixed;top:0;right:0;bottom:0;z-index:199;width:min(320px,85vw);
-  background:var(--bg2);border-left:1px solid var(--border);
-  display:flex;flex-direction:column;padding:0;
-  transform:translateX(100%);
-  transition:transform 0.4s var(--ease);
-  box-shadow:-30px 0 80px rgba(0,0,0,0.7);
+  position:fixed;inset:0;z-index:199;
+  background:var(--bg);
+  display:flex;flex-direction:column;
+  transform:translateY(-100%);
+  transition:transform 0.45s var(--ease);
+  overflow-y:auto;
 }
-.mob-drawer.open{transform:translateX(0)}
-.mob-drawer-overlay{
-  position:fixed;inset:0;z-index:198;background:rgba(0,0,0,0.7);
-  backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity 0.3s;
-}
-.mob-drawer-overlay.open{opacity:1;pointer-events:all}
+.mob-drawer.open{transform:translateY(0)}
+.mob-drawer-overlay{display:none} /* not needed for full-screen */
+
+/* top bar inside menu */
 .drawer-header{
   display:flex;align-items:center;justify-content:space-between;
-  padding:1.4rem 1.6rem;border-bottom:1px solid var(--border);
+  padding:1.1rem 6%;
+  border-bottom:1px solid var(--border);
+  flex-shrink:0;
 }
-.drawer-logo{font-family:var(--serif);font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.4rem}
+.drawer-logo{font-family:var(--serif);font-size:1.3rem;font-weight:700;display:flex;align-items:center;gap:0.45rem}
 .drawer-logo span{color:var(--gold)}
 .drawer-close{
-  width:36px;height:36px;background:var(--cream-15);border:1px solid var(--border);
-  border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;
-  color:var(--cream-70);font-size:1.1rem;transition:var(--t);
+  width:40px;height:40px;background:var(--cream-15);border:1px solid var(--border);
+  border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:var(--cream-70);font-size:1.2rem;transition:var(--t);
+  font-weight:300;
 }
 .drawer-close:hover{background:var(--gold-dim);border-color:var(--gold-border);color:var(--cream)}
-.drawer-nav{padding:1.5rem 1.6rem;flex:1}
+
+/* big Uber-style nav links */
+.drawer-nav{
+  padding:2.5rem 6% 1.5rem;
+  flex:1;
+  display:flex;flex-direction:column;justify-content:flex-start;
+}
 .drawer-nav a{
-  display:flex;align-items:center;gap:0.8rem;
-  padding:0.9rem 1rem;border-radius:12px;margin-bottom:0.3rem;
-  font-size:0.95rem;font-weight:500;color:var(--cream-70);
-  transition:var(--t);border:1px solid transparent;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.05rem 0;
+  font-family:var(--serif);
+  font-size:clamp(2rem,8vw,2.6rem);
+  font-weight:900;
+  color:var(--cream);
+  border-bottom:1px solid var(--border);
+  transition:color 0.2s;
+  letter-spacing:-0.02em;
+  line-height:1.1;
 }
-.drawer-nav a:hover{
-  background:var(--gold-dim);border-color:var(--gold-border);color:var(--cream);
+.drawer-nav a:last-child{border-bottom:none}
+.drawer-nav a:hover{color:var(--gold)}
+.drawer-nav a .nav-arrow{
+  font-size:1.2rem;color:var(--cream-40);
+  transition:transform 0.2s,color 0.2s;
+  flex-shrink:0;margin-left:1rem;
 }
-.drawer-nav a .nav-icon{font-size:1rem;width:20px;text-align:center}
-.drawer-divider{height:1px;background:var(--border);margin:0.8rem 0}
-.drawer-cta{padding:1.4rem 1.6rem;border-top:1px solid var(--border)}
+.drawer-nav a:hover .nav-arrow{transform:translateX(4px);color:var(--gold)}
+.drawer-nav a .nav-icon{display:none} /* hide icons in uber mode */
+
+.drawer-divider{height:1px;background:var(--border);margin:0.5rem 0}
+
+/* bottom CTA buttons */
+.drawer-cta{
+  padding:1.5rem 6% 2.5rem;
+  border-top:1px solid var(--border);
+  display:flex;gap:0.75rem;
+  flex-shrink:0;
+}
 .drawer-cta a{
   display:flex;align-items:center;justify-content:center;gap:0.5rem;
-  width:100%;padding:0.9rem;border-radius:12px;font-weight:700;font-size:0.9rem;
-  transition:var(--t);margin-bottom:0.7rem;
+  flex:1;padding:0.9rem 1rem;border-radius:50px;font-weight:700;font-size:0.88rem;
+  transition:var(--t);
 }
 .drawer-cta-call{background:var(--gold);color:var(--bg)}
-.drawer-cta-call:hover{background:var(--gold-bright);transform:translateY(-1px)}
+.drawer-cta-call:hover{background:var(--gold-bright)}
 .drawer-cta-wa{background:#25d366;color:#fff}
-.drawer-cta-wa:hover{background:#1ebe5c;transform:translateY(-1px)}
+.drawer-cta-wa:hover{background:#1ebe5c}
+} /* end @media phone-only drawer */
 
 /* ━━ HERO ━━ */
 .hero{
@@ -518,10 +546,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:5rem 5% 
   </div>
 </nav>
 
-<!-- OVERLAY -->
-<div class="mob-drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
+<!-- OVERLAY (unused in full-screen mode but kept for JS compat) -->
+<div class="mob-drawer-overlay" id="drawerOverlay"></div>
 
-<!-- MOBILE DRAWER -->
+<!-- MOBILE DRAWER — UBER STYLE -->
 <div class="mob-drawer" id="mobDrawer">
   <div class="drawer-header">
     <div class="drawer-logo">
@@ -531,20 +559,19 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:5rem 5% 
     <button class="drawer-close" onclick="toggleDrawer()">✕</button>
   </div>
   <div class="drawer-nav">
-    <a href="#why" onclick="toggleDrawer()"><span class="nav-icon">🛡️</span> Why Us</a>
-    <a href="#services" onclick="toggleDrawer()"><span class="nav-icon">🚗</span> Services</a>
-    <a href="#pricing" onclick="toggleDrawer()"><span class="nav-icon">💰</span> Pricing</a>
-    <a href="#cities" onclick="toggleDrawer()"><span class="nav-icon">📍</span> Cities</a>
-    <a href="#reviews" onclick="toggleDrawer()"><span class="nav-icon">⭐</span> Reviews</a>
-    <a href="#faq" onclick="toggleDrawer()"><span class="nav-icon">❓</span> FAQ</a>
-    <div class="drawer-divider"></div>
-    <a href="#" onclick="toggleDrawer();document.getElementById('aiFab').click()" style="color:var(--gold)"><span class="nav-icon">🤖</span> AI Assistant</a>
+    <a href="#why" onclick="toggleDrawer()">Why Us <span class="nav-arrow">→</span></a>
+    <a href="#services" onclick="toggleDrawer()">Services <span class="nav-arrow">→</span></a>
+    <a href="#pricing" onclick="toggleDrawer()">Pricing <span class="nav-arrow">→</span></a>
+    <a href="#cities" onclick="toggleDrawer()">Cities <span class="nav-arrow">→</span></a>
+    <a href="#reviews" onclick="toggleDrawer()">Reviews <span class="nav-arrow">→</span></a>
+    <a href="#faq" onclick="toggleDrawer()">FAQ <span class="nav-arrow">→</span></a>
+    <a href="#" onclick="toggleDrawer();setTimeout(()=>document.getElementById('aiFab').click(),400)" style="color:var(--gold)">AI Assistant <span class="nav-arrow" style="color:var(--gold)">→</span></a>
   </div>
   <div class="drawer-cta">
-    <a href="tel:919111473929" class="drawer-cta-call">📞 Call — 9111473929</a>
+    <a href="tel:919111473929" class="drawer-cta-call">📞 9111473929</a>
     <a href="https://wa.me/919111473929" class="drawer-cta-wa">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.455 23l.582-3.436A10.892 10.892 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a10.892 10.892 0 01-6.545-2.145L1 23l4.455-.001z"/></svg>
-      WhatsApp Us
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M5.455 23l.582-3.436A10.892 10.892 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a10.892 10.892 0 01-6.545-2.145L1 23l4.455-.001z"/></svg>
+      WhatsApp
     </a>
   </div>
 </div>
@@ -888,13 +915,11 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:5rem 5% 
 const nb=document.getElementById('navbar');
 window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',scrollY>60));
 
-/* ━━ MOBILE DRAWER ━━ */
+/* ━━ MOBILE DRAWER (UBER STYLE) ━━ */
 function toggleDrawer(){
   const ham=document.getElementById('ham');
   const drawer=document.getElementById('mobDrawer');
-  const overlay=document.getElementById('drawerOverlay');
   const open=drawer.classList.toggle('open');
-  overlay.classList.toggle('open',open);
   ham.classList.toggle('active',open);
   document.body.style.overflow=open?'hidden':'';
 }
